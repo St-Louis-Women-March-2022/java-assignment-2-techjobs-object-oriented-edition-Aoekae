@@ -52,4 +52,19 @@ public class JobTest {
         assertEquals(test.toString().charAt(0), '\n');
         assertEquals(test.toString().charAt(test.toString().length()-1), '\n');
     }
+
+    @Test
+    public void testToStringContainsCorrectLabelsAndData(){
+        Job test = new Job("job", new Employer("Boss"), new Location("Place"), new PositionType("Test"), new CoreCompetency("Skill"));
+        assertEquals(test.toString().contains("Name: job"), true);
+        assertEquals(test.toString().contains("Employer: Boss"), true);
+        assertEquals(test.toString().contains("Location: Place"), true);
+        assertEquals(test.toString().contains("Position Type: Test"), true);
+        assertEquals(test.toString().contains("Core Competency: Skill"), true);
+    }
+
+    @Test
+    public void testToStringHandlesEmptyField() {
+        Job test = new Job("job", new Employer("Boss"), new Location("Place"), new PositionType("Test"), new CoreCompetency("Skill"));
+    }
 }
