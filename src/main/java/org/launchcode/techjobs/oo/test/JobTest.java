@@ -55,8 +55,8 @@ public class JobTest {
 
     @Test
     public void testToStringContainsCorrectLabelsAndData(){
-        Job test = new Job("job", new Employer("Boss"), new Location("Place"), new PositionType("Test"), new CoreCompetency("Skill"));
-        assertEquals(test.toString().contains("Name: job"), true);
+        Job test = new Job("Job", new Employer("Boss"), new Location("Place"), new PositionType("Test"), new CoreCompetency("Skill"));
+        assertEquals(test.toString().contains("Name: Job"), true);
         assertEquals(test.toString().contains("Employer: Boss"), true);
         assertEquals(test.toString().contains("Location: Place"), true);
         assertEquals(test.toString().contains("Position Type: Test"), true);
@@ -65,6 +65,7 @@ public class JobTest {
 
     @Test
     public void testToStringHandlesEmptyField() {
-        Job test = new Job("job", new Employer("Boss"), new Location("Place"), new PositionType("Test"), new CoreCompetency("Skill"));
+        Job test = new Job("", new Employer("Boss"), new Location("Place"), new PositionType("Test"), new CoreCompetency("Skill"));
+        assertEquals(test.toString().contains("Name: Data Not Available"), true);
     }
 }

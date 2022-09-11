@@ -1,5 +1,6 @@
 package org.launchcode.techjobs.oo;
 
+import java.lang.reflect.Array;
 import java.util.Objects;
 
 public class Job {
@@ -49,7 +50,39 @@ public class Job {
 
     @Override
     public String toString() {
-        return "\n ID: " + this.getId() + "\n Name: " + this.getName() + "\n Employer: " + this.getEmployer() + "\n Location: " + this.getLocation()+ "\n Position Type: " + this.getPositionType()+ "\n Core Competency: " + this.coreCompetency+ "\n";
+        String[] listOfParameters = new String[6];
+        String[] listOfVariables = new String[6];
+        String text = "\n";
+
+        listOfParameters[0]= "ID: ";
+        listOfParameters[1] = "Name: ";
+        listOfParameters[2] = "Employer: ";
+        listOfParameters[3] = "Location: ";
+        listOfParameters[4] = "Position Type: ";
+        listOfParameters[5] = "Core Competency: ";
+
+        listOfVariables[0]= this.getId() + "\n";
+        listOfVariables[1]= this.getName() + "\n";
+        listOfVariables[2]= this.getEmployer() + "\n";
+        listOfVariables[3]= this.getLocation() + "\n";
+        listOfVariables[4]= this.getPositionType() + "\n";
+        listOfVariables[5]= this.getCoreCompetency() + "\n";
+
+
+
+        if ((listOfVariables[0] == "" + "\n") && (listOfVariables[1] == "" + "\n") && (listOfVariables[2] == "" + "\n") && (listOfVariables[3] == "" + "\n") && (listOfVariables[4] == "" + "\n")&& (listOfVariables[5] == "" + "\n")) {
+            return "OOPS! This job does not seem to exist.";
+        } else {
+
+            for (int index = 0; index < listOfVariables.length; index++) {
+                if (listOfVariables[index].equals("" + "\n")) {
+                    listOfVariables[index] = "Data Not Available" + "\n";
+                }
+                text += listOfParameters[index] + listOfVariables[index];
+
+            }
+        }
+        return text;
     }
 
 
