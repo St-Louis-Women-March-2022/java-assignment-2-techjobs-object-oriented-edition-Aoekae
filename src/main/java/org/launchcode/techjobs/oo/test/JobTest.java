@@ -68,4 +68,10 @@ public class JobTest {
         Job test = new Job("", new Employer("Boss"), new Location("Place"), new PositionType("Test"), new CoreCompetency("Skill"));
         assertEquals(test.toString().contains("Name: Data Not Available"), true);
     }
+
+    @Test
+    public void testToStringHandlesNonExistentJob() {
+        Job testing = new Job();
+        assertEquals(testing.toString(), "OOPS! This job does not seem to exist.");
+    }
 }

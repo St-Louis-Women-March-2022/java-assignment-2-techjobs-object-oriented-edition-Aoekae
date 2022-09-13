@@ -1,6 +1,7 @@
 package org.launchcode.techjobs.oo;
 
 import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class Job {
@@ -51,9 +52,12 @@ public class Job {
     @Override
     public String toString() {
         String[] listOfParameters = new String[6];
-        String[] listOfVariables = new String[6];
+        ArrayList<String> addedVariables = new ArrayList<>();
+        ArrayList<String> totalVariables = new ArrayList<>();
         String text = "\n";
+        String emptyCheck = "" + "\n";
 
+        //setting the array for later printing
         listOfParameters[0]= "ID: ";
         listOfParameters[1] = "Name: ";
         listOfParameters[2] = "Employer: ";
@@ -61,27 +65,43 @@ public class Job {
         listOfParameters[4] = "Position Type: ";
         listOfParameters[5] = "Core Competency: ";
 
-        listOfVariables[0]= this.getId() + "\n";
-        listOfVariables[1]= this.getName() + "\n";
-        listOfVariables[2]= this.getEmployer() + "\n";
-        listOfVariables[3]= this.getLocation() + "\n";
-        listOfVariables[4]= this.getPositionType() + "\n";
-        listOfVariables[5]= this.getCoreCompetency() + "\n";
+        //setting the list of fields I'll use to check the data
 
+        String idString = this.getId() + "\n";
+        String nameString = this.getName() + "\n";
+        String employerString = this.getEmployer() + "\n";
+        String locationString = this.getLocation() + "\n";
+        String positionTypeString = this.getPositionType() + "\n";
+        String skillString = this.getCoreCompetency() + "\n";
 
+//        System.out.println(idString);
+//        System.out.println(nameString);
+//        System.out.println(employerString);
+//        System.out.println(locationString);
+//        System.out.println(positionTypeString);
+//        System.out.println(skillString);
 
-        if ((listOfVariables[0] == "" + "\n") && (listOfVariables[1] == "" + "\n") && (listOfVariables[2] == "" + "\n") && (listOfVariables[3] == "" + "\n") && (listOfVariables[4] == "" + "\n")&& (listOfVariables[5] == "" + "\n")) {
-            return "OOPS! This job does not seem to exist.";
-        } else {
+        totalVariables.add(idString);
+        totalVariables.add(nameString);
+        totalVariables.add(employerString);
+        totalVariables.add(locationString);
+        totalVariables.add(positionTypeString);
+        totalVariables.add(skillString);
 
-            for (int index = 0; index < listOfVariables.length; index++) {
-                if (listOfVariables[index].equals("" + "\n")) {
-                    listOfVariables[index] = "Data Not Available" + "\n";
+        //setting the id into addedVariables
+       //if fields exist, iterate through and add the variables to the addedVariables arraylist
+        if (nameString!= emptyCheck && employerString != emptyCheck && locationString!=emptyCheck && positionTypeString!=emptyCheck && skillString!=emptyCheck) {
+            for (int index = 0; index < totalVariables.size(); index++) {
+                if (totalVariables.get(index).equals(emptyCheck)) {
+                    totalVariables.set(index, "Data Not Available" + "\n");
                 }
-                text += listOfParameters[index] + listOfVariables[index];
-
+                addedVariables.add(totalVariables.get(index));
+                text += listOfParameters[index] + addedVariables.get(index);
+//                    System.out.println(text);
             }
-        }
+        } else if (this.getName()==null && this.getEmployer()==null && this.getLocation()==null && this.getPositionType()==null && this.getCoreCompetency()==null) {
+            text = "\n OOPS! This job does not seem to exist.\n";
+            }
         return text;
     }
 
