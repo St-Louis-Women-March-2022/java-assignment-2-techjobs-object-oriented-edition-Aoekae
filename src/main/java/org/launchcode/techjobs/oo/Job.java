@@ -74,12 +74,7 @@ public class Job {
         String positionTypeString = this.getPositionType() + "\n";
         String skillString = this.getCoreCompetency() + "\n";
 
-//        System.out.println(idString);
-//        System.out.println(nameString);
-//        System.out.println(employerString);
-//        System.out.println(locationString);
-//        System.out.println(positionTypeString);
-//        System.out.println(skillString);
+        //adding variables to totalVariables in string format for checking via iteration
 
         totalVariables.add(idString);
         totalVariables.add(nameString);
@@ -89,19 +84,17 @@ public class Job {
         totalVariables.add(skillString);
 
         //setting the id into addedVariables
-       //if fields exist, iterate through and add the variables to the addedVariables arraylist
-        if (nameString!= emptyCheck && employerString != emptyCheck && locationString!=emptyCheck && positionTypeString!=emptyCheck && skillString!=emptyCheck) {
+//       //if fields exist, iterate through and add the variables to the addedVariables arraylist
+//        if (nameString!= emptyCheck && employerString != emptyCheck && locationString!=emptyCheck && positionTypeString!=emptyCheck && skillString!=emptyCheck) {
             for (int index = 0; index < totalVariables.size(); index++) {
                 if (totalVariables.get(index).equals(emptyCheck)) {
                     totalVariables.set(index, "Data Not Available" + "\n");
                 }
                 addedVariables.add(totalVariables.get(index));
                 text += listOfParameters[index] + addedVariables.get(index);
-//                    System.out.println(text);
+
             }
-        } else if (this.getName()==null && this.getEmployer()==null && this.getLocation()==null && this.getPositionType()==null && this.getCoreCompetency()==null) {
-            text = "\n OOPS! This job does not seem to exist.\n";
-            }
+//        System.out.println(text);
         return text;
     }
 

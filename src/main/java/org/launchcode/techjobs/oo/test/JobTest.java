@@ -56,22 +56,13 @@ public class JobTest {
     @Test
     public void testToStringContainsCorrectLabelsAndData(){
         Job test = new Job("Job", new Employer("Boss"), new Location("Place"), new PositionType("Test"), new CoreCompetency("Skill"));
-        assertEquals(test.toString().contains("Name: Job"), true);
-        assertEquals(test.toString().contains("Employer: Boss"), true);
-        assertEquals(test.toString().contains("Location: Place"), true);
-        assertEquals(test.toString().contains("Position Type: Test"), true);
-        assertEquals(test.toString().contains("Core Competency: Skill"), true);
+        assertEquals(test.toString(), "\nID: "+ test.getId() +"\n" + "Name: Job\n"+"Employer: Boss\n"+"Location: Place\n"+"Position Type: Test\n"+"Core Competency: Skill\n");
+
     }
 
     @Test
     public void testToStringHandlesEmptyField() {
         Job test = new Job("", new Employer("Boss"), new Location("Place"), new PositionType("Test"), new CoreCompetency("Skill"));
-        assertEquals(test.toString().contains("Name: Data Not Available"), true);
-    }
-
-    @Test
-    public void testToStringHandlesNonExistentJob() {
-        Job testing = new Job();
-        assertEquals(testing.toString(), "OOPS! This job does not seem to exist.");
+        assertEquals(test.toString(),"\nID: "+ test.getId() +"\n" + "Name: Data Not Available\n"+"Employer: Boss\n"+"Location: Place\n"+"Position Type: Test\n"+"Core Competency: Skill\n");
     }
 }
