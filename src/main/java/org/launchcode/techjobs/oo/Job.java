@@ -88,7 +88,7 @@ public class Job {
 //        if (nameString!= emptyCheck && employerString != emptyCheck && locationString!=emptyCheck && positionTypeString!=emptyCheck && skillString!=emptyCheck) {
             for (int index = 0; index < totalVariables.size(); index++) {
                 if (totalVariables.get(index).equals(emptyCheck)) {
-                    totalVariables.set(index, "Data Not Available" + "\n");
+                    totalVariables.set(index, "Data not available" + "\n");
                 }
                 addedVariables.add(totalVariables.get(index));
                 text += listOfParameters[index] + addedVariables.get(index);
